@@ -12,7 +12,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--primary:#ff6b35;--font:'Noto Sans KR',sans-serif;--text-dark:#1f2430;--text-muted:#5b6472;--bg-section:#fff5f0}
-body{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line-height:1.7;background:var(--bg-section);min-height:100vh}
+body{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line-height:1.7;background:var(--bg-section);min-height:100vh;padding-bottom:80px}
 .container{max-width:1200px;margin:0 auto;padding:0 20px}
 .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,26,.9);border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:1200px;margin:0 auto;padding:0 20px}
@@ -33,6 +33,11 @@ body{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line-
 .btn-primary{background:var(--primary);color:#fff;padding:16px 38px;border-radius:14px;font-weight:700;font-size:1rem;display:inline-flex;align-items:center;gap:8px;text-decoration:none;box-shadow:0 4px 14px rgba(255,107,53,.28)}
 .banner-container{max-width:1200px;margin:30px auto 0;padding:0 20px}
 .banner-container img{width:100%;height:auto;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.15);object-fit:cover;max-height:400px}
+.region-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-bottom:20px}
+.region-card{background:#fff;padding:30px;border-radius:16px;text-align:center;border:1px solid rgba(255,107,53,.15);box-shadow:0 4px 12px rgba(0,0,0,.03);text-decoration:none;transition:all .3s}
+.region-card:hover{transform:translateY(-5px);border-color:var(--primary);box-shadow:0 8px 20px rgba(255,107,53,.15)}
+.region-card h3{font-size:1.4rem;color:var(--text-dark);margin-bottom:8px}
+.region-card p{font-size:0.9rem;color:var(--text-muted)}
 .price-board{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:20px}
 .pt-row{background:#fff;border-radius:16px;padding:24px;border:1px solid rgba(255,107,53,.15);box-shadow:0 4px 12px rgba(0,0,0,.03)}
 .pt-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #eee}
@@ -46,6 +51,13 @@ body{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line-
 .footer h3{color:#fff;font-size:16px;margin-bottom:16px}
 .business-info-footer{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;margin-top:20px;font-size:.85rem;line-height:1.6}
 .footer-bottom{text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05);font-size:.8rem}
+
+/* 하단 플로팅 반응형 CTA 바 스타일 */
+.floating-cta{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,26,.95);backdrop-filter:blur(10px);border-top:1px solid rgba(255,107,53,.3);padding:12px 20px;z-index:9999;display:flex;gap:12px;max-width:600px;margin:0 auto;box-shadow:0 -4px 20px rgba(0,0,0,.3)}
+.floating-cta a{flex:1;padding:14px 0;border-radius:12px;text-align:center;font-weight:700;font-size:1rem;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px}
+.cta-call{background:var(--primary);color:#fff;box-shadow:0 3px 10px rgba(255,107,53,.3)}
+.cta-sms{background:#25d366;color:#fff;box-shadow:0 3px 10px rgba(37,211,102,.3)}
+@media(max-width:768px){.floating-cta{max-width:100%;border-radius:0;padding:10px 14px}}
 </style>
 </head>
 <body>
@@ -82,10 +94,8 @@ body{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line-
     <img src="../../../images/banner.jpg" alt="종로구 출장마사지·홈타이 배너">
   </div>
 
-  <!-- 동적 콘텐츠 (구 선택 리스트 혹은 요금표) -->
   <section class="section section-light"><div class="container"><div class="section-title"><div class="bar"></div><h2>세부 동 선택</h2><p>원하시는 동을 선택하여 맞춤 페이지로 이동하세요.</p></div><div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;"><a href="/seoul/jongno/청운동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">청운동</a><a href="/seoul/jongno/신교동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">신교동</a><a href="/seoul/jongno/궁정동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">궁정동</a><a href="/seoul/jongno/효자동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">효자동</a><a href="/seoul/jongno/창성동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">창성동</a><a href="/seoul/jongno/통인동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">통인동</a><a href="/seoul/jongno/체부동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">체부동</a><a href="/seoul/jongno/통의동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">통의동</a><a href="/seoul/jongno/사직동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">사직동</a><a href="/seoul/jongno/적선동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">적선동</a><a href="/seoul/jongno/도렴동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">도렴동</a><a href="/seoul/jongno/내자동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">내자동</a><a href="/seoul/jongno/필운동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">필운동</a><a href="/seoul/jongno/누상동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">누상동</a><a href="/seoul/jongno/누하동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">누하동</a><a href="/seoul/jongno/옥인동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">옥인동</a><a href="/seoul/jongno/회현동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">회현동</a><a href="/seoul/jongno/명동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">명동</a><a href="/seoul/jongno/종로1가/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">종로1가</a><a href="/seoul/jongno/종로2가/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">종로2가</a><a href="/seoul/jongno/종로3가/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">종로3가</a><a href="/seoul/jongno/종로4가/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">종로4가</a><a href="/seoul/jongno/종로5가/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">종로5가</a><a href="/seoul/jongno/종로6가/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">종로6가</a><a href="/seoul/jongno/인의동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">인의동</a><a href="/seoul/jongno/원남동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">원남동</a><a href="/seoul/jongno/연지동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">연지동</a><a href="/seoul/jongno/효제동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">효제동</a><a href="/seoul/jongno/동숭동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">동숭동</a><a href="/seoul/jongno/이화동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">이화동</a><a href="/seoul/jongno/혜화동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">혜화동</a><a href="/seoul/jongno/명륜1가/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">명륜1가</a><a href="/seoul/jongno/명륜2가/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">명륜2가</a><a href="/seoul/jongno/명륜3가/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">명륜3가</a><a href="/seoul/jongno/명륜4가/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">명륜4가</a><a href="/seoul/jongno/창신동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">창신동</a><a href="/seoul/jongno/숭인동/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">숭인동</a></div></div></section>
 
-  <!-- 프로그램 & 요금표 섹션 -->
   <section class="section section-white" id="price">
     <div class="container">
       <div class="section-title">
@@ -134,6 +144,32 @@ body{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line-
       </div>
     </div>
   </section>
+
+  <!-- 하단 서비스 지역 선택 섹션 추가 -->
+  <section class="section section-light" id="regions">
+    <div class="container">
+      <div class="section-title">
+        <div class="bar"></div>
+        <h2>서비스 지역 선택</h2>
+        <p>방문을 원하시는 권역을 선택해 세부 지역별 안내를 확인하세요.</p>
+      </div>
+
+      <div class="region-grid">
+        <a href="/seoul.html" class="region-card">
+          <h3>서울 지역</h3>
+          <p>강남, 서초, 송파, 마포 등 서울 전 지역 전 구·동 전체보기</p>
+        </a>
+        <a href="/gyeonggi.html" class="region-card">
+          <h3>경기 지역</h3>
+          <p>수원, 성남, 분당, 일산, 부천 등 경기 전 지역 전 시·군·동 전체보기</p>
+        </a>
+        <a href="/incheon.html" class="region-card">
+          <h3>인천 지역</h3>
+          <p>송도, 부평, 남동구, 서구 등 인천 전 지역 전 자치구·동 전체보기</p>
+        </a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="footer">
@@ -153,6 +189,11 @@ body{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line-
     </div>
   </div>
 </footer>
+
+<div class="floating-cta">
+  <a href="tel:050712803296" class="cta-call">📞 전화하기</a>
+  <a href="sms:050712803296" class="cta-sms">💬 문자하기</a>
+</div>
 
 </body>
 </html>

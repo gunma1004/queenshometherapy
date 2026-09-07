@@ -145,7 +145,7 @@ desc_templates = [
     "완벽한 휴식을 위한 24시 홈케어 파트너, {full_name} {dong} 출장마사지 퀸즈홈테라피. 지금 바로 전문 관리사를 만나보세요."
 ]
 
-# 공통 HTML 템플릿 (배너 + 코스/요금표 포함)
+# 공통 HTML 템플릿 (하단에 서비스 지역 선택 섹션 추가)
 def get_html_content(title, desc, banner_path, main_title, sub_desc, content_html, breadcrumb):
     return f"""<!DOCTYPE html>
 <html lang="ko">
@@ -182,6 +182,11 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
 .btn-primary{{background:var(--primary);color:#fff;padding:16px 38px;border-radius:14px;font-weight:700;font-size:1rem;display:inline-flex;align-items:center;gap:8px;text-decoration:none;box-shadow:0 4px 14px rgba(255,107,53,.28)}}
 .banner-container{{max-width:1200px;margin:30px auto 0;padding:0 20px}}
 .banner-container img{{width:100%;height:auto;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.15);object-fit:cover;max-height:400px}}
+.region-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-bottom:20px}}
+.region-card{{background:#fff;padding:30px;border-radius:16px;text-align:center;border:1px solid rgba(255,107,53,.15);box-shadow:0 4px 12px rgba(0,0,0,.03);text-decoration:none;transition:all .3s}}
+.region-card:hover{{transform:translateY(-5px);border-color:var(--primary);box-shadow:0 8px 20px rgba(255,107,53,.15)}}
+.region-card h3{{font-size:1.4rem;color:var(--text-dark);margin-bottom:8px}}
+.region-card p{{font-size:0.9rem;color:var(--text-muted)}}
 .price-board{{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:20px}}
 .pt-row{{background:#fff;border-radius:16px;padding:24px;border:1px solid rgba(255,107,53,.15);box-shadow:0 4px 12px rgba(0,0,0,.03)}}
 .pt-head{{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #eee}}
@@ -288,6 +293,32 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
       </div>
     </div>
   </section>
+
+  <!-- 하단 서비스 지역 선택 섹션 추가 -->
+  <section class="section section-light" id="regions">
+    <div class="container">
+      <div class="section-title">
+        <div class="bar"></div>
+        <h2>서비스 지역 선택</h2>
+        <p>방문을 원하시는 권역을 선택해 세부 지역별 안내를 확인하세요.</p>
+      </div>
+
+      <div class="region-grid">
+        <a href="/seoul.html" class="region-card">
+          <h3>서울 지역</h3>
+          <p>강남, 서초, 송파, 마포 등 서울 전 지역 전 구·동 전체보기</p>
+        </a>
+        <a href="/gyeonggi.html" class="region-card">
+          <h3>경기 지역</h3>
+          <p>수원, 성남, 분당, 일산, 부천 등 경기 전 지역 전 시·군·동 전체보기</p>
+        </a>
+        <a href="/incheon.html" class="region-card">
+          <h3>인천 지역</h3>
+          <p>송도, 부평, 남동구, 서구 등 인천 전 지역 전 자치구·동 전체보기</p>
+        </a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="footer">
@@ -316,3 +347,91 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
 </body>
 </html>
 """
+
+count = 0
+sitemap_urls = ["https://queenshometherapy.netlify.app/"]
+
+# 1. 서울, 경기, 인천 대분류 허브 페이지 생성
+for region_key, region_info in full_regions_data.items():
+    full_name = region_info["name"]
+    sitemap_urls.append(f"https://queenshometherapy.netlify.app/{region_key}.html")
+    
+    dist_cards_html = '<section class="section section-light"><div class="container"><div class="section-title"><div class="bar"></div><h2>세부 구·시·군 선택</h2><p>원하시는 구/시/군을 선택하여 세부 정보를 확인하세요.</p></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;">'
+    for dist_key, dist_info in region_info["districts"].items():
+        district_name = dist_info["name"]
+        dist_cards_html += f'<a href="/{region_key}/{dist_key}/" style="background:#fff;padding:20px;border-radius:12px;text-align:center;text-decoration:none;color:var(--text-dark);border:1px solid rgba(255,107,53,.15);font-weight:700;box-shadow:0 4px 10px rgba(0,0,0,.02);">{full_name} {district_name}</a>'
+    dist_cards_html += '</div></div></section>'
+    
+    hub_content = get_html_content(
+        title=f"{full_name} 출장마사지 전 지역 안내 - 퀸즈홈테라피",
+        desc=f"{full_name} 지역 전 구·시·군 24시 출장마사지 및 홈타이 서비스 안내.",
+        banner_path="images/banner.jpg",
+        main_title=f"{full_name} 출장마사지·홈타이 서비스",
+        sub_desc=f"{full_name} 전 지역 연중무휴 24시",
+        content_html=dist_cards_html,
+        breadcrumb=f"{full_name} 전체보기"
+    )
+    with open(f"{region_key}.html", "w", encoding="utf-8") as f:
+        f.write(hub_content)
+
+    # 2. 구(District)별 하위 페이지 생성
+    for dist_key, dist_info in region_info["districts"].items():
+        district_name = dist_info["name"]
+        dist_path = f"{region_key}/{dist_key}"
+        sitemap_urls.append(f"https://queenshometherapy.netlify.app/{dist_path}/")
+        
+        dong_links_html = '<section class="section section-light"><div class="container"><div class="section-title"><div class="bar"></div><h2>세부 동 선택</h2><p>원하시는 동을 선택하여 맞춤 페이지로 이동하세요.</p></div><div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">'
+        for dong in dist_info["dongs"]:
+            dong_path = f"{region_key}/{dist_key}/{dong}"
+            sitemap_urls.append(f"https://queenshometherapy.netlify.app/{dong_path}/")
+            dong_links_html += f'<a href="/{dong_path}/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">{dong}</a>'
+        dong_links_html += '</div></div></section>'
+
+        dist_folder = os.path.join(region_key, dist_key)
+        os.makedirs(dist_folder, exist_ok=True)
+        
+        dist_content = get_html_content(
+            title=f"{full_name} {district_name} 출장마사지 - 24시 홈타이",
+            desc=f"{full_name} {district_name} 출장마사지 및 홈타이 전문. 전 동 30분 내 방문.",
+            banner_path="../../../images/banner.jpg",
+            main_title=f"{district_name} 출장마사지·홈타이",
+            sub_desc=f"{full_name} {district_name} 전 지역",
+            content_html=dong_links_html,
+            breadcrumb=f"{full_name} {district_name}"
+        )
+        with open(os.path.join(dist_folder, "index.html"), "w", encoding="utf-8") as f:
+            f.write(dist_content)
+
+        # 3. 개별 동 페이지 생성
+        for dong in dist_info["dongs"]:
+            dong_path = f"{region_key}/{dist_key}/{dong}"
+            folder_path = os.path.join(region_key, dist_key, dong)
+            os.makedirs(folder_path, exist_ok=True)
+            
+            page_title = random.choice(title_templates).format(full_name=full_name, dong=dong)
+            page_desc = random.choice(desc_templates).format(full_name=full_name, dong=dong)
+            
+            dong_content = get_html_content(
+                title=page_title,
+                desc=page_desc,
+                banner_path="../../../images/banner.jpg",
+                main_title=f"{dong} 출장마사지·홈타이",
+                sub_desc=f"{full_name} {district_name} {dong}",
+                content_html="", 
+                breadcrumb=f"{full_name} {district_name} {dong}"
+            )
+            with open(os.path.join(folder_path, "index.html"), "w", encoding="utf-8") as f:
+                f.write(dong_content)
+            count += 1
+
+# sitemap.xml 생성
+sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+sitemap_xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+for url in sitemap_urls:
+    sitemap_xml += f"  <url>\n    <loc>{url}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n"
+sitemap_xml += '</urlset>'
+
+with open("sitemap.xml", "w", encoding="utf-8") as f:
+    f.write(sitemap_xml)
+
+print(f"총 {count}개의 동 페이지 및 대분류/구별 허브 샵 페이지, 사이트맵 생성이 완료되었습니다!")
