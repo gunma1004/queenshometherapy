@@ -145,8 +145,7 @@ desc_templates = [
     "완벽한 휴식을 위한 24시 홈케어 파트너, {full_name} {dong} 출장마사지 퀸즈홈테라피. 지금 바로 전문 관리사를 만나보세요."
 ]
 
-# 공통 HTML 템플릿 (하단에 서비스 지역 선택 섹션 추가)
-def get_html_content(title, desc, banner_path, main_title, sub_desc, content_html, breadcrumb):
+def get_html_content(title, desc, banner_path, main_title, sub_desc, bottom_selector_html, breadcrumb):
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -155,6 +154,7 @@ def get_html_content(title, desc, banner_path, main_title, sub_desc, content_htm
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="robots" content="index,follow">
+<meta name="naver-site-verification" content="3f345e54f2dfbcb90e980d17cfe5c1febe5f14aa">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -201,7 +201,6 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
 .business-info-footer{{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;margin-top:20px;font-size:.85rem;line-height:1.6}}
 .footer-bottom{{text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05);font-size:.8rem}}
 
-/* 하단 플로팅 반응형 CTA 바 스타일 */
 .floating-cta{{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,26,.95);backdrop-filter:blur(10px);border-top:1px solid rgba(255,107,53,.3);padding:12px 20px;z-index:9999;display:flex;gap:12px;max-width:600px;margin:0 auto;box-shadow:0 -4px 20px rgba(0,0,0,.3)}}
 .floating-cta a{{flex:1;padding:14px 0;border-radius:12px;text-align:center;font-weight:700;font-size:1rem;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px}}
 .cta-call{{background:var(--primary);color:#fff;box-shadow:0 3px 10px rgba(255,107,53,.3)}}
@@ -242,8 +241,6 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
   <div class="banner-container">
     <img src="{banner_path}" alt="{main_title} 배너">
   </div>
-
-  {content_html}
 
   <section class="section section-white" id="price">
     <div class="container">
@@ -294,31 +291,7 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
     </div>
   </section>
 
-  <!-- 하단 서비스 지역 선택 섹션 추가 -->
-  <section class="section section-light" id="regions">
-    <div class="container">
-      <div class="section-title">
-        <div class="bar"></div>
-        <h2>서비스 지역 선택</h2>
-        <p>방문을 원하시는 권역을 선택해 세부 지역별 안내를 확인하세요.</p>
-      </div>
-
-      <div class="region-grid">
-        <a href="/seoul.html" class="region-card">
-          <h3>서울 지역</h3>
-          <p>강남, 서초, 송파, 마포 등 서울 전 지역 전 구·동 전체보기</p>
-        </a>
-        <a href="/gyeonggi.html" class="region-card">
-          <h3>경기 지역</h3>
-          <p>수원, 성남, 분당, 일산, 부천 등 경기 전 지역 전 시·군·동 전체보기</p>
-        </a>
-        <a href="/incheon.html" class="region-card">
-          <h3>인천 지역</h3>
-          <p>송도, 부평, 남동구, 서구 등 인천 전 지역 전 자치구·동 전체보기</p>
-        </a>
-      </div>
-    </div>
-  </section>
+  {bottom_selector_html}
 </main>
 
 <footer class="footer">
@@ -368,7 +341,7 @@ for region_key, region_info in full_regions_data.items():
         banner_path="images/banner.jpg",
         main_title=f"{full_name} 출장마사지·홈타이 서비스",
         sub_desc=f"{full_name} 전 지역 연중무휴 24시",
-        content_html=dist_cards_html,
+        bottom_selector_html=dist_cards_html,
         breadcrumb=f"{full_name} 전체보기"
     )
     with open(f"{region_key}.html", "w", encoding="utf-8") as f:
@@ -396,7 +369,7 @@ for region_key, region_info in full_regions_data.items():
             banner_path="../../../images/banner.jpg",
             main_title=f"{district_name} 출장마사지·홈타이",
             sub_desc=f"{full_name} {district_name} 전 지역",
-            content_html=dong_links_html,
+            bottom_selector_html=dong_links_html,
             breadcrumb=f"{full_name} {district_name}"
         )
         with open(os.path.join(dist_folder, "index.html"), "w", encoding="utf-8") as f:
@@ -411,13 +384,19 @@ for region_key, region_info in full_regions_data.items():
             page_title = random.choice(title_templates).format(full_name=full_name, dong=dong)
             page_desc = random.choice(desc_templates).format(full_name=full_name, dong=dong)
             
+            other_dongs_html = f'<section class="section section-light"><div class="container"><div class="section-title"><div class="bar"></div><h2>{district_name} 다른 동 둘러보기</h2><p>인근 지역의 다른 동도 확인해보세요.</p></div><div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">'
+            for d in dist_info["dongs"]:
+                if d != dong:
+                    other_dongs_html += f'<a href="/{region_key}/{dist_key}/{d}/" style="background:#fff;color:var(--text-dark);padding:6px 12px;border-radius:8px;font-size:0.85rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">{d}</a>'
+            other_dongs_html += '</div></div></section>'
+            
             dong_content = get_html_content(
                 title=page_title,
                 desc=page_desc,
-                banner_path="../../../images/banner.jpg",
+                banner_path="../../../../images/banner.jpg",
                 main_title=f"{dong} 출장마사지·홈타이",
                 sub_desc=f"{full_name} {district_name} {dong}",
-                content_html="", 
+                bottom_selector_html=other_dongs_html,
                 breadcrumb=f"{full_name} {district_name} {dong}"
             )
             with open(os.path.join(folder_path, "index.html"), "w", encoding="utf-8") as f:
@@ -434,4 +413,4 @@ sitemap_xml += '</urlset>'
 with open("sitemap.xml", "w", encoding="utf-8") as f:
     f.write(sitemap_xml)
 
-print(f"총 {count}개의 동 페이지 및 대분류/구별 허브 샵 페이지, 사이트맵 생성이 완료되었습니다!")
+print(f"총 {count}개의 동 페이지 및 대분류/구별 허브 샵 페이지, 네이버 메타 태그, 사이트맵 생성이 완료되었습니다!")
