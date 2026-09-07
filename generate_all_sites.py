@@ -87,25 +87,26 @@ full_regions_data = {
     }
 }
 
+# '출장마사지' 키워드가 무조건 포함되도록 템플릿 수정
 title_templates = [
     "{full_name} {dong} 출장마사지 - 24시 홈타이 후불제",
     "{dong} 출장마사지 전문 퀸즈홈테라피 | {full_name} 30분 내 방문",
-    "[{full_name}] {dong} 출장안마·홈타이 서비스 24시간 연중무휴",
+    "[{full_name}] {dong} 출장마사지·홈타이 서비스 24시간 연중무휴",
     "{dong} 출장마사지 추천 퀸즈홈테라피 - 믿을 수 있는 100% 후불제",
     "{full_name} {dong} 홈타이 및 출장마사지 | 피로 회복 맞춤 케어",
     "{dong} 출장마사지 잘하는 곳 퀸즈홈테라피 ({full_name} 전지역)",
     "[{dong} 출장마사지] 퀸즈홈테라피 - 아로마·스웨디시·건식 24시",
     "{full_name} {dong} 출장마사지 서비스 | 프라이빗 홈케어",
-    "{dong} 홈타이 출장마사지 - 퀸즈홈테라피 {full_name} 직영 관리사",
+    "{dong} 출장마사지 홈타이 - 퀸즈홈테라피 {full_name} 직영 관리사",
     "[{full_name} {dong}] 24시 출장마사지·홈타이 빠른 방문 서비스",
     "{dong} 출장마사지 | 지친 일상을 깨우는 퀸즈홈테라피 힐링 케어",
-    "{full_name} {dong} 출장안마 및 홈타이 | 365일 연중무휴 24시",
+    "{full_name} {dong} 출장마사지 및 홈타이 | 365일 연중무휴 24시",
     "{dong} 출장마사지 퀸즈홈테라피 - 건식·아로마 맞춤 프로그램",
     "[{full_name}] {dong} 홈타이 출장마사지 후불제 안심 서비스",
     "{dong} 출장마사지 전문 퀸즈홈테라피와 함께하는 편안한 휴식",
     "{full_name} {dong} 출장마사지·홈타이 | 1:1 맞춤 프리미엄 케어",
     "{dong} 출장마사지 | 퀸즈홈테라피 {full_name} 어디서나 30분 방문",
-    "[{dong} 출장안마] 퀸즈홈테라피에서 제공하는 24시 홈케어",
+    "[{dong} 출장마사지] 퀸즈홈테라피에서 제공하는 24시 홈케어",
     "{full_name} {dong} 홈타이 출장마사지 - 전문 관리사 상시 대기",
     "{dong} 출장마사지 추천 퀸즈홈테라피 ({full_name} 권역별 밀착 케어)",
     "[{full_name} {dong}] 프라이빗하게 즐기는 24시 출장마사지",
@@ -113,36 +114,36 @@ title_templates = [
     "{full_name} {dong} 홈타이 및 출장마사지 | 신속한 방문 서비스",
     "{dong} 출장마사지 전문 - 퀸즈홈테라피 {full_name} 전 지역 운영",
     "[{dong} 출장마사지] 퀸즈홈테라피와 함께 편안한 공간에서 힐링",
-    "{full_name} {dong} 출장안마 홈타이 24시 | 믿을 수 있는 후불제"
+    "{full_name} {dong} 출장마사지 홈타이 24시 | 믿을 수 있는 후불제"
 ]
 
 desc_templates = [
     "{full_name} {dong} 출장마사지 및 홈타이 전문 퀸즈홈테라피입니다. 30분 내 신속 방문과 100% 후불제 안심 서비스로 24시간 언제든 편안한 케어를 받아보세요.",
-    "{dong} 출장마사지를 찾고 계신가요? 퀸즈홈테라피는 {full_name} {dong} 지역 어디든 24시간 빠르게 방문하여 건식, 아로마, 스웨디시 케어를 제공합니다.",
+    "{dong} 출장마사지를 찾고 계신가요? 퀸즈홈테라피는 {full_name} {dong} 지역 어디든 24시간 빠르게 방문하여 건식, 아로마, 스웨디시 출장마사지 케어를 제공합니다.",
     "일상을 채우는 휴식, {full_name} {dong} 출장마사지 퀸즈홈테라피. 실력 있는 전문 관리사가 직접 찾아가 피로를 말끔히 풀어드립니다.",
-    "100% 후불제로 안전한 {full_name} {dong} 출장마사지·홈타이 서비스. 건식, 아로마, 스웨디시, VIP 코스로 나만의 맞춤 힐링을 경험하세요.",
-    "{dong} 지역 24시 출장마사지 전문! 퀸즈홈테라피가 {full_name} 고객님 계신 곳으로 직접 찾아가 편안하고 품격 있는 휴식을 선물합니다.",
-    "지친 몸과 마음을 위한 힐링 타임, {full_name} {dong} 출장마사지 퀸즈홈테라피. 365일 연중무휴 24시간 편안한 방문 홈케어를 만나보세요.",
-    "빠르고 신속한 방문, {dong} 출장마사지는 퀸즈홈테라피입니다. {full_name} 전 지역에서 24시간 편안하게 전문 관리사의 케어를 받아보실 수 있습니다.",
-    "프리미엄 관리로 완성되는 {full_name} {dong} 출장마사지·홈타이. 퀸즈홈테라피만의 특별한 프로그램으로 일상의 피로를 날려버리세요.",
-    "언제 어디서나 편안하게, {dong} 출장마사지 퀸즈홈테라피가 {full_name} 지역 구석구석 신속하게 방문하여 맞춤형 힐링 케어를 선사합니다.",
+    "100% 후불제로 안전한 {full_name} {dong} 출장마사지·홈타이 서비스. 건식, 아로마, 스웨디시, VIP 코스로 나만의 맞춤 출장마사지 힐링을 경험하세요.",
+    "{dong} 지역 24시 출장마사지 전문! 퀸즈홈테라피가 {full_name} 고객님 계신 곳으로 직접 찾아가 편안하고 품격 있는 출장마사지 휴식을 선물합니다.",
+    "지친 몸과 마음을 위한 힐링 타임, {full_name} {dong} 출장마사지 퀸즈홈테라피. 365일 연중무휴 24시간 편안한 방문 출장마사지 홈케어를 만나보세요.",
+    "빠르고 신속한 방문, {dong} 출장마사지는 퀸즈홈테라피입니다. {full_name} 전 지역에서 24시간 편안하게 전문 관리사의 출장마사지 케어를 받아보실 수 있습니다.",
+    "프리미엄 관리로 완성되는 {full_name} {dong} 출장마사지·홈타이. 퀸즈홈테라피만의 특별한 출장마사지 프로그램으로 일상의 피로를 날려버리세요.",
+    "언제 어디서나 편안하게, {dong} 출장마사지 퀸즈홈테라피가 {full_name} 지역 구석구석 신속하게 방문하여 맞춤형 출장마사지 힐링 케어를 선사합니다.",
     "믿을 수 있는 100% 후불제 시스템! {full_name} {dong} 출장마사지 및 홈타이는 퀸즈홈테라피에서 편안하게 예약하고 이용하세요.",
-    "체계적인 프로그램과 전문 관리사의 손길, {dong} 출장마사지 퀸즈홈테라피가 {full_name} 고객님을 위해 24시간 대기하고 있습니다.",
-    "나만의 공간에서 즐기는 휴식, {full_name} {dong} 출장마사지·홈타이 전문 퀸즈홈테라피와 함께 완벽한 힐링을 경험해 보세요.",
-    "스트레스와 피로 해소를 위한 선택, {dong} 출장마사지 퀸즈홈테라피. {full_name} 지역 24시 친절 상담 및 신속 방문을 보장합니다.",
-    "품격 있는 관리를 원하신다면 {full_name} {dong} 출장마사지 퀸즈홈테라피를 찾아주세요. 건식부터 아로마까지 전문적인 케어가 찾아갑니다.",
-    "기다림 없는 빠른 방문, {dong} 출장마사지 전문 퀸즈홈테라피입니다. {full_name} 어디서나 24시간 편안한 홈타이 서비스를 누려보세요.",
-    "지친 하루의 완벽한 마무리, {full_name} {dong} 출장마사지 퀸즈홈테라피. 전문 관리사가 선사하는 1:1 맞춤 케어를 경험해 보세요.",
-    "안심하고 이용할 수 있는 후불제 출장마사지! {dong} 및 {full_name} 전 지역 24시 신속 방문 퀸즈홈테라피가 함께합니다.",
-    "일상의 활력을 되찾아주는 {full_name} {dong} 출장마사지·홈타이 서비스. 퀸즈홈테라피에서 차별화된 힐링 프로그램을 만나보세요.",
-    "꼼꼼하고 섬세한 손길의 {dong} 출장마사지 퀸즈홈테라피. {full_name} 고객님의 편안한 휴식을 위해 24시간 언제나 열려있습니다.",
-    "프라이빗한 공간에서 누리는 최고의 휴식, {full_name} {dong} 출장마사지 퀸즈홈테라피와 함께 피로를 말끔히 씻어내세요.",
-    "언제나 고객 중심의 서비스, {dong} 출장마사지 퀸즈홈테라피가 {full_name} 지역에 24시간 대기 중입니다. 지금 바로 문의하세요.",
-    "전문적인 테라피로 찾아가는 {full_name} {dong} 출장마사지·홈타이. 퀸즈홈테라피에서 편안하고 안전한 관리를 받아보세요.",
-    "당신의 휴식을 책임지는 {dong} 출장마사지 퀸즈홈테라피. {full_name} 전 지역 신속한 방문으로 최상의 만족감을 드립니다.",
-    "믿을 수 있는 후불제 홈케어, {full_name} {dong} 출장마사지 퀸즈홈테라피. 아로마, 스웨디시, VIP 코스로 피로를 회복하세요.",
-    "머무시는 그 자리가 힐링 공간이 되는 곳, {dong} 출장마사지 퀸즈홈테라피. {full_name} 24시 언제든 편안하게 찾아갑니다.",
-    "완벽한 휴식을 위한 24시 홈케어 파트너, {full_name} {dong} 출장마사지 퀸즈홈테라피. 지금 바로 전문 관리사를 만나보세요."
+    "체계적인 프로그램과 전문 관리사의 손길, {dong} 출장마사지 퀸즈홈테라피가 {full_name} 고객님을 위해 24시간 출장마사지 서비스를 대기하고 있습니다.",
+    "나만의 공간에서 즐기는 휴식, {full_name} {dong} 출장마사지·홈타이 전문 퀸즈홈테라피와 함께 완벽한 힐링 출장마사지를 경험해 보세요.",
+    "스트레스와 피로 해소를 위한 선택, {dong} 출장마사지 퀸즈홈테라피. {full_name} 지역 24시 친절 상담 및 신속 방문 출장마사지를 보장합니다.",
+    "품격 있는 관리를 원하신다면 {full_name} {dong} 출장마사지 퀸즈홈테라피를 찾아주세요. 건식부터 아로마까지 전문적인 출장마사지 케어가 찾아갑니다.",
+    "기다림 없는 빠른 방문, {dong} 출장마사지 전문 퀸즈홈테라피입니다. {full_name} 어디서나 24시간 편안한 출장마사지 홈타이 서비스를 누려보세요.",
+    "지친 하루의 완벽한 마무리, {full_name} {dong} 출장마사지 퀸즈홈테라피. 전문 관리사가 선사하는 1:1 맞춤 출장마사지 케어를 경험해 보세요.",
+    "안심하고 이용할 수 있는 후불제 출장마사지! {dong} 및 {full_name} 전 지역 24시 신속 방문 퀸즈홈테라피 출장마사지가 함께합니다.",
+    "일상의 활력을 되찾아주는 {full_name} {dong} 출장마사지·홈타이 서비스. 퀸즈홈테라피에서 차별화된 출장마사지 힐링 프로그램을 만나보세요.",
+    "꼼꼼하고 섬세한 손길의 {dong} 출장마사지 퀸즈홈테라피. {full_name} 고객님의 편안한 출장마사지 휴식을 위해 24시간 언제나 열려있습니다.",
+    "프라이빗한 공간에서 누리는 최고의 휴식, {full_name} {dong} 출장마사지 퀸즈홈테라피와 함께 출장마사지로 피로를 말끔히 씻어내세요.",
+    "언제나 고객 중심의 서비스, {dong} 출장마사지 퀸즈홈테라피가 {full_name} 지역에 24시간 출장마사지를 대기 중입니다. 지금 바로 문의하세요.",
+    "전문적인 테라피로 찾아가는 {full_name} {dong} 출장마사지·홈타이. 퀸즈홈테라피에서 편안하고 안전한 출장마사지 관리를 받아보세요.",
+    "당신의 휴식을 책임지는 {dong} 출장마사지 퀸즈홈테라피. {full_name} 전 지역 신속한 출장마사지 방문으로 최상의 만족감을 드립니다.",
+    "믿을 수 있는 후불제 홈케어, {full_name} {dong} 출장마사지 퀸즈홈테라피. 아로마, 스웨디시, VIP 코스 출장마사지로 피로를 회복하세요.",
+    "머무시는 그 자리가 힐링 공간이 되는 곳, {dong} 출장마사지 퀸즈홈테라피. {full_name} 24시 언제든 편안하게 출장마사지로 찾아갑니다.",
+    "완벽한 휴식을 위한 24시 홈케어 파트너, {full_name} {dong} 출장마사지 퀸즈홈테라피. 지금 바로 전문 출장마사지 관리사를 만나보세요."
 ]
 
 def get_html_content(title, desc, banner_path, main_title, sub_desc, bottom_selector_html, breadcrumb, canonical_url):
@@ -155,7 +156,6 @@ def get_html_content(title, desc, banner_path, main_title, sub_desc, bottom_sele
 <meta name="description" content="{desc}">
 <meta name="robots" content="index,follow">
 <meta name="naver-site-verification" content="3f345e54f2dfbcb90e980d17cfe5c1febe5f14aa">
-<!-- Open Graph 태그 추가 -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
@@ -340,7 +340,7 @@ for region_key, region_info in full_regions_data.items():
     dist_cards_html = '<section class="section section-light"><div class="container"><div class="section-title"><div class="bar"></div><h2>세부 구·시·군 선택</h2><p>원하시는 구/시/군을 선택하여 세부 정보를 확인하세요.</p></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;">'
     for dist_key, dist_info in region_info["districts"].items():
         district_name = dist_info["name"]
-        dist_cards_html += f'<a href="/{region_key}/{dist_key}/" style="background:#fff;padding:20px;border-radius:12px;text-align:center;text-decoration:none;color:var(--text-dark);border:1px solid rgba(255,107,53,.15);font-weight:700;box-shadow:0 4px 10px rgba(0,0,0,.02);">{full_name} {district_name}</a>'
+        dist_cards_html += f'<a href="/{region_key}/{dist_key}/" style="background:#fff;padding:20px;border-radius:12px;text-align:center;text-decoration:none;color:var(--text-dark);border:1px solid rgba(255,107,53,.15);font-weight:700;box-shadow:0 4px 10px rgba(0,0,0,.02);">{full_name} {district_name} 출장마사지</a>'
     dist_cards_html += '</div></div></section>'
     
     hub_content = get_html_content(
@@ -363,11 +363,11 @@ for region_key, region_info in full_regions_data.items():
         canonical_url = f"https://queenshometherapy.netlify.app/{dist_path}/"
         sitemap_urls.append(canonical_url)
         
-        dong_links_html = '<section class="section section-light"><div class="container"><div class="section-title"><div class="bar"></div><h2>세부 동 선택</h2><p>원하시는 동을 선택하여 맞춤 페이지로 이동하세요.</p></div><div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">'
+        dong_links_html = '<section class="section section-light"><div class="container"><div class="section-title"><div class="bar"></div><h2>세부 동 선택</h2><p>원하시는 동을 선택하여 맞춤 출장마사지 페이지로 이동하세요.</p></div><div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">'
         for dong in dist_info["dongs"]:
             dong_path = f"{region_key}/{dist_key}/{dong}"
             sitemap_urls.append(f"https://queenshometherapy.netlify.app/{dong_path}/")
-            dong_links_html += f'<a href="/{dong_path}/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">{dong}</a>'
+            dong_links_html += f'<a href="/{dong_path}/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">{dong} 출장마사지</a>'
         dong_links_html += '</div></div></section>'
 
         dist_folder = os.path.join(region_key, dist_key)
@@ -396,10 +396,10 @@ for region_key, region_info in full_regions_data.items():
             page_title = random.choice(title_templates).format(full_name=full_name, dong=dong)
             page_desc = random.choice(desc_templates).format(full_name=full_name, dong=dong)
             
-            other_dongs_html = f'<section class="section section-light"><div class="container"><div class="section-title"><div class="bar"></div><h2>{district_name} 다른 동 둘러보기</h2><p>인근 지역의 다른 동도 확인해보세요.</p></div><div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">'
+            other_dongs_html = f'<section class="section section-light"><div class="container"><div class="section-title"><div class="bar"></div><h2>{district_name} 다른 동 출장마사지 둘러보기</h2><p>인근 지역의 다른 동도 확인해보세요.</p></div><div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">'
             for d in dist_info["dongs"]:
                 if d != dong:
-                    other_dongs_html += f'<a href="/{region_key}/{dist_key}/{d}/" style="background:#fff;color:var(--text-dark);padding:6px 12px;border-radius:8px;font-size:0.85rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">{d}</a>'
+                    other_dongs_html += f'<a href="/{region_key}/{dist_key}/{d}/" style="background:#fff;color:var(--text-dark);padding:6px 12px;border-radius:8px;font-size:0.85rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">{d} 출장마사지</a>'
             other_dongs_html += '</div></div></section>'
             
             dong_content = get_html_content(
@@ -426,4 +426,4 @@ sitemap_xml += '</urlset>'
 with open("sitemap.xml", "w", encoding="utf-8") as f:
     f.write(sitemap_xml)
 
-print(f"총 {count}개의 동 페이지 및 대분류/구별 허브 샵 페이지, 네이버 메타 태그, Open Graph 태그, 사이트맵 생성이 완료되었습니다!")
+print(f"총 {count}개의 동 페이지 및 대분류/구별 허브 샵 페이지, '출장마사지' 키워드 고정 반영 완료!")
