@@ -145,15 +145,16 @@ desc_templates = [
     "완벽한 휴식을 위한 24시 홈케어 파트너, {full_name} {dong} 출장마사지 퀸즈홈테라피. 지금 바로 전문 관리사를 만나보세요."
 ]
 
-html_template = """<!DOCTYPE html>
+# 공통 HTML 템플릿 (배너 + 코스/요금표 포함)
+def get_html_content(title, desc, banner_path, main_title, sub_desc, content_html, breadcrumb):
+    return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{page_title}</title>
-<meta name="description" content="{page_desc}">
+<title>{title}</title>
+<meta name="description" content="{desc}">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://queenshometherapy.netlify.app/{dir_path}/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -204,12 +205,11 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
       <div class="logo-icon">Q</div>
       <div>
         <div class="logo-text">퀸즈홈테라피</div>
-        <div class="logo-sub">{full_name} {district_name} {dong}</div>
+        <div class="logo-sub">{breadcrumb}</div>
       </div>
     </a>
     <nav class="nav">
       <a href="/">홈</a>
-      <a href="/{region_key}.html">{full_name} 전체보기</a>
       <a href="tel:050712803296" class="nav-cta">전화 예약</a>
     </nav>
   </div>
@@ -218,9 +218,9 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
 <main role="main">
   <section style="background:#15151f;padding:140px 20px 50px;text-align:center;">
     <div class="container">
-      <div style="color:var(--primary);font-size:14px;letter-spacing:2px;margin-bottom:16px;font-weight:700;">{full_name} {district_name} {dong} 출장마사지 24시</div>
-      <h1 style="color:#fff;font-size:clamp(28px,4vw,44px);line-height:1.3;margin-bottom:18px">{dong} 출장마사지·홈타이<br><span style="color:var(--primary)">퀸즈홈테라피 30분 내 방문</span></h1>
-      <p style="color:#b5b5c6;font-size:16px;max-width:600px;margin:0 auto 30px">{full_name} {district_name} {dong} 지역 어디든 전문 관리사가 직접 찾아가 편안한 케어를 제공합니다.</p>
+      <div style="color:var(--primary);font-size:14px;letter-spacing:2px;margin-bottom:16px;font-weight:700;">{sub_desc}</div>
+      <h1 style="color:#fff;font-size:clamp(28px,4vw,44px);line-height:1.3;margin-bottom:18px">{main_title}</h1>
+      <p style="color:#b5b5c6;font-size:16px;max-width:600px;margin:0 auto 30px">{sub_desc} 전문 관리사가 직접 찾아가 편안하고 품격 있는 케어를 제공합니다.</p>
       <div>
         <a href="tel:050712803296" class="btn-primary">0507-1280-3296 전화 예약하기</a>
       </div>
@@ -228,14 +228,18 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
   </section>
 
   <div class="banner-container">
-    <img src="../../../images/banner.jpg" alt="{full_name} {dong} 퀸즈홈테라피 출장마사지 배너">
+    <img src="{banner_path}" alt="{main_title} 배너">
   </div>
 
+  <!-- 동적 콘텐츠 (구 선택 리스트 혹은 요금표) -->
+  {content_html}
+
+  <!-- 프로그램 & 요금표 섹션 -->
   <section class="section section-white" id="price">
     <div class="container">
       <div class="section-title">
         <div class="bar"></div>
-        <h2>{dong} 출장마사지 프로그램 & 요금</h2>
+        <h2>퀸즈 프로그램 & 이용 요금</h2>
         <p>관리 스타일과 이용 시간을 비교해 나에게 맞는 프로그램을 살펴보세요.</p>
       </div>
 
@@ -285,13 +289,13 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
   <div class="container">
     <div class="footer-grid">
       <div>
-        <h3>퀸즈홈테라피 ({dong})</h3>
+        <h3>퀸즈홈테라피</h3>
         <p style="margin-top:12px"><strong>고객센터:</strong> <a href="tel:050712803296" style="color:#fff;text-decoration:none;">0507-1280-3296</a></p>
-        <p><strong>지역:</strong> {full_name} {district_name} {dong}</p>
+        <p><strong>운영시간:</strong> 365일 연중무휴</p>
       </div>
     </div>
     <div class="business-info-footer">
-      <p><strong>퀸즈홈테라피</strong> | {full_name} {district_name} {dong} 출장마사지 안내 페이지</p>
+      <p><strong>퀸즈홈테라피</strong> | {breadcrumb} 출장마사지 안내 페이지</p>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 퀸즈홈테라피. All rights reserved.</p>
@@ -306,210 +310,78 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
 count = 0
 sitemap_urls = ["https://queenshometherapy.netlify.app/"]
 
-# 1. 서울, 경기, 인천 메인 페이지 (seoul.html 등) 및 구 단위 허브 페이지 자동 생성
+# 1. 서울, 경기, 인천 대분류 허브 페이지 생성 (seoul.html 등)
 for region_key, region_info in full_regions_data.items():
     full_name = region_info["name"]
     sitemap_urls.append(f"https://queenshometherapy.netlify.app/{region_key}.html")
     
-    # 지역별(서울/경기/인천) 대분류 허브 페이지 HTML 작성
-    region_hub_html = f"""<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{full_name} 출장마사지 구별 전체보기 - 퀸즈홈테라피</title>
-<meta name="description" content="{full_name} 지역 전 구·시·군 24시 출장마사지 및 홈타이 서비스 안내. 원하시는 구를 선택하여 세부 동 정보를 확인하세요.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://queenshometherapy.netlify.app/{region_key}.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-*{{margin:0;padding:0;box-sizing:border-box}}
-:root{{--primary:#ff6b35;--font:'Noto Sans KR',sans-serif;--text-dark:#1f2430;--text-muted:#5b6472;--bg-section:#fff5f0}}
-body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line-height:1.7;background:var(--bg-section);min-height:100vh}}
-.container{{max-width:1200px;margin:0 auto;padding:0 20px}}
-.header{{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,26,.9);border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px)}}
-.header-inner{{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:1200px;margin:0 auto;padding:0 20px}}
-.logo{{display:flex;align-items:center;gap:10px;text-decoration:none}}
-.logo-icon{{width:40px;height:40px;background:var(--primary);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff}}
-.logo-text{{font-size:1.2rem;font-weight:700;color:#fff}}
-.logo-sub{{font-size:.7rem;color:#b5b5c6;margin-top:-2px}}
-.nav{{display:flex;gap:28px;align-items:center}}
-.nav a{{color:#fff;font-size:.92rem;text-decoration:none}}
-.nav-cta{{background:var(--primary);color:#fff!important;padding:10px 22px;border-radius:30px;font-weight:700;font-size:.88rem}}
-.section{{padding:80px 0}}
-.section-title{{text-align:center;margin-bottom:40px}}
-.section-title .bar{{width:40px;height:3px;background:var(--primary);margin:0 auto 12px;border-radius:2px}}
-.section-title h2{{font-size:clamp(24px,3vw,36px);font-weight:700;color:var(--text-dark);margin-bottom:10px}}
-.district-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}}
-.district-card{{background:#fff;border-radius:16px;padding:24px;border:1px solid rgba(255,107,53,.15);box-shadow:0 4px 12px rgba(0,0,0,.03);text-decoration:none;transition:all .3s}}
-.district-card:hover{{transform:translateY(-5px);border-color:var(--primary);box-shadow:0 8px 20px rgba(255,107,53,.15)}}
-.district-card h3{{font-size:1.3rem;color:var(--primary);margin-bottom:10px}}
-.district-card p{{font-size:0.9rem;color:var(--text-muted)}}
-.footer{{background:#15151f;color:#b5b5c6;padding:60px 0 30px;font-size:14px}}
-.footer-bottom{{text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05);font-size:.8rem}}
-</style>
-</head>
-<body>
-<header class="header">
-  <div class="header-inner">
-    <a href="/" class="logo">
-      <div class="logo-icon">Q</div>
-      <div>
-        <div class="logo-text">퀸즈홈테라피</div>
-        <div class="logo-sub">{full_name} 지역별 안내</div>
-      </div>
-    </a>
-    <nav class="nav">
-      <a href="/">홈으로</a>
-      <a href="tel:050712803296" class="nav-cta">전화 예약</a>
-    </nav>
-  </div>
-</header>
-<main role="main">
-  <section class="section" style="padding-top:140px;">
-    <div class="container">
-      <div class="section-title">
-        <div class="bar"></div>
-        <h2>{full_name} 출장마사지 구·시·군 선택</h2>
-        <p>방문 원하시는 구 또는 시·군을 선택하세요.</p>
-      </div>
-      <div class="district-grid">
-"""
+    dist_cards_html = '<section class="section section-light"><div class="container"><div class="section-title"><div class="bar"></div><h2>세부 구·시·군 선택</h2><p>원하시는 구/시/군을 선택하여 세부 정보를 확인하세요.</p></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;">'
+    for dist_key, dist_info in region_info["districts"].items():
+        district_name = dist_info["name"]
+        dist_cards_html += f'<a href="/{region_key}/{dist_key}/" style="background:#fff;padding:20px;border-radius:12px;text-align:center;text-decoration:none;color:var(--text-dark);border:1px solid rgba(255,107,53,.15);font-weight:700;box-shadow:0 4px 10px rgba(0,0,0,.02);">{full_name} {district_name}</a>'
+    dist_cards_html += '</div></div></section>'
+    
+    hub_content = get_html_content(
+        title=f"{full_name} 출장마사지 전 지역 안내 - 퀸즈홈테라피",
+        desc=f"{full_name} 지역 전 구·시·군 24시 출장마사지 및 홈타이 서비스 안내.",
+        banner_path="images/banner.jpg",
+        main_title=f"{full_name} 출장마사지·홈타이 서비스",
+        sub_desc=f"{full_name} 전 지역 연중무휴 24시",
+        content_html=dist_cards_html,
+        breadcrumb=f"{full_name} 전체보기"
+    )
+    with open(f"{region_key}.html", "w", encoding="utf-8") as f:
+        f.write(hub_content)
 
+    # 2. 구(District)별 하위 페이지 생성 (seoul/gangnam/index.html 등)
     for dist_key, dist_info in region_info["districts"].items():
         district_name = dist_info["name"]
         dist_path = f"{region_key}/{dist_key}"
         sitemap_urls.append(f"https://queenshometherapy.netlify.app/{dist_path}/")
         
-        region_hub_html += f"""        <a href="/{dist_path}/" class="district-card">
-          <h3>{full_name} {district_name}</h3>
-          <p>{district_name} 전 지역 24시 신속 방문 및 출장마사지 안내</p>
-        </a>\n"""
+        dong_links_html = '<section class="section section-light"><div class="container"><div class="section-title"><div class="bar"></div><h2>세부 동 선택</h2><p>원하시는 동을 선택하여 맞춤 페이지로 이동하세요.</p></div><div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">'
+        for dong in dist_info["dongs"]:
+            dong_path = f"{region_key}/{dist_key}/{dong}"
+            sitemap_urls.append(f"https://queenshometherapy.netlify.app/{dong_path}/")
+            dong_links_html += f'<a href="/{dong_path}/" style="background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);">{dong}</a>'
+        dong_links_html += '</div></div></section>'
 
-        # 2. 각 구(District)별 하위 페이지 허브 생성 (예: seoul/gangnam/index.html)
         dist_folder = os.path.join(region_key, dist_key)
         os.makedirs(dist_folder, exist_ok=True)
         
-        dist_page_html = f"""<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{full_name} {district_name} 출장마사지 - 24시 홈타이</title>
-<meta name="description" content="{full_name} {district_name} 출장마사지 및 홈타이 전문. 전 동 30분 내 방문 및 100% 후불제 안심 서비스 제공.">
-<meta name="robots" content="index,follow">
-<link rel="canonical" href="https://queenshometherapy.netlify.app/{dist_path}/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-*{{margin:0;padding:0;box-sizing:border-box}}
-:root{{--primary:#ff6b35;--font:'Noto Sans KR',sans-serif;--text-dark:#1f2430;--text-muted:#5b6472;--bg-section:#fff5f0}}
-body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line-height:1.7;background:var(--bg-section);min-height:100vh}}
-.container{{max-width:1200px;margin:0 auto;padding:0 20px}}
-.header{{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,26,.9);border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px)}}
-.header-inner{{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:1200px;margin:0 auto;padding:0 20px}}
-.logo{{display:flex;align-items:center;gap:10px;text-decoration:none}}
-.logo-icon{{width:40px;height:40px;background:var(--primary);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff}}
-.logo-text{{font-size:1.2rem;font-weight:700;color:#fff}}
-.logo-sub{{font-size:.7rem;color:#b5b5c6;margin-top:-2px}}
-.nav{{display:flex;gap:28px;align-items:center}}
-.nav a{{color:#fff;font-size:.92rem;text-decoration:none}}
-.nav-cta{{background:var(--primary);color:#fff!important;padding:10px 22px;border-radius:30px;font-weight:700;font-size:.88rem}}
-.section{{padding:80px 0}}
-.section-title{{text-align:center;margin-bottom:40px}}
-.section-title .bar{{width:40px;height:3px;background:var(--primary);margin:0 auto 12px;border-radius:2px}}
-.section-title h2{{font-size:clamp(24px,3vw,36px);font-weight:700;color:var(--text-dark);margin-bottom:10px}}
-.dong-list{{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}}
-.dong-list a{{background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);transition:all .2s}}
-.dong-list a:hover{{background:var(--primary);color:#fff;border-color:var(--primary)}}
-.footer{{background:#15151f;color:#b5b5c6;padding:60px 0 30px;font-size:14px}}
-.footer-bottom{{text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05);font-size:.8rem}}
-</style>
-</head>
-<body>
-<header class="header">
-  <div class="header-inner">
-    <a href="/" class="logo">
-      <div class="logo-icon">Q</div>
-      <div>
-        <div class="logo-text">퀸즈홈테라피</div>
-        <div class="logo-sub">{full_name} {district_name}</div>
-      </div>
-    </a>
-    <nav class="nav">
-      <a href="/{region_key}.html">{full_name} 전체보기</a>
-      <a href="tel:050712803296" class="nav-cta">전화 예약</a>
-    </nav>
-  </div>
-</header>
-<main role="main">
-  <section class="section" style="padding-top:140px;">
-    <div class="container">
-      <div class="section-title">
-        <div class="bar"></div>
-        <h2>{full_name} {district_name} 세부 동 선택</h2>
-        <p>원하시는 동을 선택하시면 해당 지역 맞춤 페이지로 이동합니다.</p>
-      </div>
-      <div class="dong-list">
-"""
-        # 3. 개별 동 페이지 생성 및 구 허브에 동 링크 추가
+        dist_content = get_html_content(
+            title=f"{full_name} {district_name} 출장마사지 - 24시 홈타이",
+            desc=f"{full_name} {district_name} 출장마사지 및 홈타이 전문. 전 동 30분 내 방문.",
+            banner_path="../../../images/banner.jpg",
+            main_title=f"{district_name} 출장마사지·홈타이",
+            sub_desc=f"{full_name} {district_name} 전 지역",
+            content_html=dong_links_html,
+            breadcrumb=f"{full_name} {district_name}"
+        )
+        with open(os.path.join(dist_folder, "index.html"), "w", encoding="utf-8") as f:
+            f.write(dist_content)
+
+        # 3. 개별 동 페이지 생성 (seoul/gangnam/역삼동/index.html 등)
         for dong in dist_info["dongs"]:
-            dir_path = f"{region_key}/{dist_key}/{dong}"
-            sitemap_urls.append(f"https://queenshometherapy.netlify.app/{dir_path}/")
-            dist_page_html += f'        <a href="/{dir_path}/">{dong}</a>\n'
-            
+            dong_path = f"{region_key}/{dist_key}/{dong}"
             folder_path = os.path.join(region_key, dist_key, dong)
             os.makedirs(folder_path, exist_ok=True)
             
             page_title = random.choice(title_templates).format(full_name=full_name, dong=dong)
             page_desc = random.choice(desc_templates).format(full_name=full_name, dong=dong)
             
-            html_content = html_template.format(
-                full_name=full_name,
-                district_name=district_name,
-                dong=dong,
-                page_title=page_title,
-                page_desc=page_desc,
-                dir_path=dir_path,
-                region_key=region_key
+            dong_content = get_html_content(
+                title=page_title,
+                desc=page_desc,
+                banner_path="../../../images/banner.jpg",
+                main_title=f"{dong} 출장마사지·홈타이",
+                sub_desc=f"{full_name} {district_name} {dong}",
+                content_html="", # 동 페이지는 요금표가 바로 나옴
+                breadcrumb=f"{full_name} {district_name} {dong}"
             )
-            
             with open(os.path.join(folder_path, "index.html"), "w", encoding="utf-8") as f:
-                f.write(html_content)
+                f.write(dong_content)
             count += 1
-
-        dist_page_html += """      </div>
-    </div>
-  </section>
-</main>
-<footer class="footer">
-  <div class="container">
-    <div class="footer-bottom"><p>&copy; 2026 퀸즈홈테라피. All rights reserved.</p></div>
-  </div>
-</footer>
-</body>
-</html>"""
-        
-        with open(os.path.join(dist_folder, "index.html"), "w", encoding="utf-8") as f:
-            f.write(dist_page_html)
-
-    region_hub_html += """      </div>
-    </div>
-  </section>
-</main>
-<footer class="footer">
-  <div class="container">
-    <div class="footer-bottom"><p>&copy; 2026 퀸즈홈테라피. All rights reserved.</p></div>
-  </div>
-</footer>
-</body>
-</html>"""
-    
-    with open(f"{region_key}.html", "w", encoding="utf-8") as f:
-        f.write(region_hub_html)
 
 # sitemap.xml 생성
 sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -521,4 +393,4 @@ sitemap_xml += '</urlset>'
 with open("sitemap.xml", "w", encoding="utf-8") as f:
     f.write(sitemap_xml)
 
-print(f"총 {count}개의 동별 페이지 및 지역/구별 허브 페이지, 사이트맵 생성이 완료되었습니다!")
+print(f"총 {count}개의 동 페이지 및 대분류/구별 허브 샵 페이지, 사이트맵 생성이 완료되었습니다!")
