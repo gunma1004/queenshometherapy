@@ -6,10 +6,14 @@ full_regions_data = {
     "seoul": {
         "name": "서울",
         "districts": {
-            "jongno": {"name": "종로구", "dongs": ["청운동", "신교동", "궁정동", "효자동", "창성동", "통인동", "체부동", "통의동", "사직동", "적선동", "도렴동", "내자동", "필운동", "누상동", "누하동", "옥인동", "회현동", "명동", "종로1가", "종로2가", "종로3가", "종로4가", "종로5가", "종로6가", "인의동", "원남동", "연지동", "효제동", "동숭동", "이화동", "혜화동", "명륜1가", "명륜2가", "명륜3가", "명륜4가", "창신동", "숭인동", "교남동", "평동", "송월동", "홍파동", "신문로1가", "신문로2가", "무악동", "교북동", "행촌동", "삼청동", "안국동", "팔판동", "소격동", "화동", "사간동", "송현동", "가회동", "재동", "계동", "원서동", "익선동", "경운동", "관훈동", "낙원동", "인사동", "묘동"]},
-            "jung-seoul": {"name": "중구", "dongs": ["무교동", "다동", "태평로1가", "을지로1가", "을지로2가", "남대문로1가", "남대문로2가", "삼각동", "수하동", "장교동", "수표동", "을지로3가", "주교동", "방산동", "오장동", "입정동", "산림동", "을지로4가", "을지로5가", "을지로6가", "장충동1가", "장충동2가", "광희동1가", "광희동2가", "을지로7가", "쌍림동", "소공동", "회현동1가", "회현동2가", "남산동1가", "후암동", "남창동", "필동1가", "필동2가", "필동3가", "남학동", "주자동", "예관동", "묵정동", "신당동", "흥인동", "다산동", "약수동", "청구동", "동화동", "황학동", "중림동"]},
-            "yongsan": {"name": "용산구", "dongs": ["후암동", "용산동2가", "용산동3가", "용산동4가", "용산동5가", "용산동6가", "동자동", "갈월동", "남영동", "한강로1가", "한강로2가", "한강로3가", "원효로1가", "원효로2가", "원효로3가", "원효로4가", "신창동", "산천동", "청암동", "효창동", "도원동", "용문동", "문배동", "신계동", "이촌동", "이태원동", "한남동", "동빙고동", "서빙고동", "주성동", "보광동", "청파동1가", "청파동2가", "청파동3가"]},
-            "seongdong": {"name": "성동구", "dongs": ["상왕십리동", "하왕십리동", "홍익동", "도선동", "마장동", "사근동", "행당동", "응봉동", "금호동1가", "금호동2가", "금호동3가", "금호동4가", "옥수동", "성수동1가", "성수동2가", "송정동", "용답동"]},
+            "gangnam": {"name": "강남구", "dongs": ["역삼동", "개포동", "청담동", "삼성동", "대치동", "신사동", "논현동", "압구정동", "세곡동", "자곡동", "율현동", "일원동", "수서동", "도곡동"]},
+            "seocho": {"name": "서초구", "dongs": ["서초동", "잠원동", "반포동", "방배동", "양재동", "우면동", "원지동", "내곡동", "신원동"]},
+            "songpa": {"name": "송파구", "dongs": ["잠실동", "신천동", "풍납동", "송파동", "석촌동", "삼전동", "가락동", "문정동", "장지동", "방이동", "오금동", "거여동", "마천동", "위례동"]},
+            "mapo": {"name": "마포구", "dongs": ["아현동", "공덕동", "도화동", "용강동", "토정동", "신수동", "구수동", "창전동", "상수동", "하중동", "신정동", "당인동", "서교동", "동교동", "합정동", "망원동", "연남동", "성산동", "상암동", "염리동", "대흥동"]},
+            "jongno": {"name": "종로구", "dongs": ["청운동", "신교동", "궁정동", "효자동", "창성동", "통인동", "체부동", "통의동", "사직동", "적선동", "도렴동", "내자동", "필운동", "누상동", "누하동", "옥인동", "회현동", "명동", "종로1가", "종로2가", "종로3가", "종로4가", "종로5가", "종로6가", "인의동", "원남동", "연지동", "효제동", "동숭동", "이화동", "혜화동", "명륜1가", "명륜2가", "명륜3가", "명륜4가", "창신동", "숭인동"]},
+            "jung-seoul": {"name": "중구", "dongs": ["무교동", "다동", "태평로1가", "을지로1가", "을지로2가", "남대문로1가", "남대문로2가", "삼각동", "수하동", "장교동", "수표동", "을지로3가", "주교동", "방산동", "오장동", "입정동", "산림동", "을지로4가", "을지로5가", "을지로6가", "장충동1가", "장충동2가", "광희동1가", "광희동2가", "을지로7가", "쌍림동", "소공동", "회현동1가", "회현동2가", "남산동1가", "후암동", "남창동", "필동", "신당동", "황학동", "중림동"]},
+            "yongsan": {"name": "용산구", "dongs": ["후암동", "용산동", "동자동", "갈월동", "남영동", "한강로", "원효로", "신창동", "산천동", "청암동", "효창동", "도원동", "용문동", "문배동", "신계동", "이촌동", "이태원동", "한남동", "서빙고동", "보광동", "청파동"]},
+            "seongdong": {"name": "성동구", "dongs": ["상왕십리동", "하왕십리동", "홍익동", "도선동", "마장동", "사근동", "행당동", "응봉동", "금호동", "옥수동", "성수동", "송정동", "용답동"]},
             "gwangjin": {"name": "광진구", "dongs": ["중곡동", "능동", "구의동", "광장동", "자양동", "화양동", "군자동"]},
             "dongdaemun": {"name": "동대문구", "dongs": ["신설동", "용두동", "제기동", "전농동", "답십리동", "장안동", "청량리동", "회기동", "휘경동", "이문동"]},
             "jungnang": {"name": "중랑구", "dongs": ["면목동", "상봉동", "중화동", "묵동", "망우동", "신내동"]},
@@ -19,7 +23,6 @@ full_regions_data = {
             "nowon": {"name": "노원구", "dongs": ["월계동", "공릉동", "하계동", "중계동", "상계동"]},
             "eunpyeong": {"name": "은평구", "dongs": ["불광동", "갈현동", "구산동", "대조동", "응암동", "역촌동", "신사동", "증산동", "수색동", "진관동", "녹번동"]},
             "seodaemun": {"name": "서대문구", "dongs": ["충정로동", "천연동", "북아현동", "신촌동", "연희동", "홍제동", "홍은동", "남가좌동", "북가좌동"]},
-            "mapo": {"name": "마포구", "dongs": ["아현동", "공덕동", "도화동", "용강동", "토정동", "신수동", "구수동", "창전동", "상수동", "하중동", "신정동", "당인동", "서교동", "동교동", "합정동", "망원동", "연남동", "성산동", "상암동", "염리동", "대흥동"]},
             "yangcheon": {"name": "양천구", "dongs": ["신정동", "목동", "신월동"]},
             "gangseo": {"name": "강서구", "dongs": ["염창동", "등촌동", "화곡동", "가양동", "마곡동", "내발산동", "외발산동", "공항동", "방화동", "개화동", "발산동"]},
             "guro": {"name": "구로구", "dongs": ["신도림동", "구로동", "가리봉동", "오류동", "개봉동", "고척동", "궁동", "항동", "천왕동"]},
@@ -27,9 +30,6 @@ full_regions_data = {
             "yeongdeungpo": {"name": "영등포구", "dongs": ["영등포동", "여의도동", "당산동", "도림동", "문래동", "양평동", "신길동", "대림동"]},
             "dongjak": {"name": "동작구", "dongs": ["노량진동", "상도동", "본동", "흑석동", "동작동", "사당동", "대방동", "신대방동"]},
             "gwanak": {"name": "관악구", "dongs": ["봉천동", "신림동", "남현동", "보라매동", "청림동", "성현동", "행운동", "낙성대동", "청룡동", "은천동", "난향동", "조원동", "대학동", "삼성동", "서원동", "신원동", "서림동", "난곡동", "신사동"]},
-            "seocho": {"name": "서초구", "dongs": ["서초동", "잠원동", "반포동", "방배동", "양재동", "우면동", "원지동", "내곡동", "신원동"]},
-            "gangnam": {"name": "강남구", "dongs": ["역삼동", "개포동", "청담동", "삼성동", "대치동", "신사동", "논현동", "압구정동", "세곡동", "자곡동", "율현동", "일원동", "수서동", "도곡동"]},
-            "songpa": {"name": "송파구", "dongs": ["잠실동", "신천동", "풍납동", "송파동", "석촌동", "삼전동", "가락동", "문정동", "장지동", "방이동", "오금동", "거여동", "마천동", "위례동"]},
             "gangdong": {"name": "강동구", "dongs": ["강일동", "상일동", "명일동", "고덕동", "암사동", "천호동", "성내동", "둔촌동", "길동"]}
         }
     },
@@ -42,7 +42,7 @@ full_regions_data = {
             "anyang": {"name": "안양시", "dongs": ["안양동", "석수동", "박달동", "비산동", "관양동", "평촌동", "호계동"]},
             "bucheon": {"name": "부천시", "dongs": ["원미동", "역곡동", "심곡동", "춘의동", "도당동", "상동", "중동", "소사동", "범박동", "옥길동", "괴안동", "송내동", "소사본동", "오정동", "여월동", "원종동", "고강동"]},
             "gwangmyeong": {"name": "광명시", "dongs": ["광명동", "철산동", "하안동", "소하동", "일직동"]},
-            "pyeongtaek": {"name": "평택시", "dongs": ["팽성읍", "안중읍", "포승읍", "청북읍", "진위면", "서탄면", "고덕면", "오성면", "현덕면", "신평동", "원평동", "통복동", "세교동", "송탄동", "지산동", "서정동", "중앙동", "비전동", "동삭동", "용이동", "고덕동"]},
+            "pyeongtaek": {"name": "평택시", "dongs": ["팽성읍", "안중읍", "포승읍", "청북읍", "진위면", "서탄면", "고덕면", "오성면", "현덕면", "신평동", "원평동", "통복동", "세교동", "송탄동", "지산동", "서정동", "중앙동", "비전동", "동삭동", "용이동"]},
             "dongducheon": {"name": "동두천시", "dongs": ["생연동", "보산동", "동두천동", "상패동", "송내동", "지행동", "불현동", "소요동"]},
             "ansan": {"name": "안산시", "dongs": ["사동", "일동", "이동", "본오동", "반월동", "성포동", "월피동", "부곡동", "선부동", "원곡동", "백운동", "초지동", "고잔동", "신길동"]},
             "goyang": {"name": "고양시", "dongs": ["원흥동", "성사동", "주교동", "대자동", "관산동", "효자동", "삼송동", "신원동", "화정동", "행신동", "토당동", "일산동", "탄현동", "중산동", "정발산동", "마두동", "백석동", "식사동", "풍동", "가좌동", "대화동", "주엽동", "덕이동"]},
@@ -204,13 +204,12 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
       <div class="logo-icon">Q</div>
       <div>
         <div class="logo-text">퀸즈홈테라피</div>
-        <div class="logo-sub">{full_name} {dong} 24시</div>
+        <div class="logo-sub">{full_name} {district_name} {dong}</div>
       </div>
     </a>
     <nav class="nav">
       <a href="/">홈</a>
-      <a href="/{region_key}.html">지역별 전체보기</a>
-      <a href="#price">프로그램 및 요금</a>
+      <a href="/{region_key}.html">{full_name} 전체보기</a>
       <a href="tel:050712803296" class="nav-cta">전화 예약</a>
     </nav>
   </div>
@@ -219,9 +218,9 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
 <main role="main">
   <section style="background:#15151f;padding:140px 20px 50px;text-align:center;">
     <div class="container">
-      <div style="color:var(--primary);font-size:14px;letter-spacing:2px;margin-bottom:16px;font-weight:700;">{full_name} {dong} 출장마사지 연중무휴 24시</div>
+      <div style="color:var(--primary);font-size:14px;letter-spacing:2px;margin-bottom:16px;font-weight:700;">{full_name} {district_name} {dong} 출장마사지 24시</div>
       <h1 style="color:#fff;font-size:clamp(28px,4vw,44px);line-height:1.3;margin-bottom:18px">{dong} 출장마사지·홈타이<br><span style="color:var(--primary)">퀸즈홈테라피 30분 내 방문</span></h1>
-      <p style="color:#b5b5c6;font-size:16px;max-width:600px;margin:0 auto 30px">{full_name} {dong} 지역 어디든 전문 관리사가 직접 찾아가 편안하고 품격 있는 케어를 제공합니다.</p>
+      <p style="color:#b5b5c6;font-size:16px;max-width:600px;margin:0 auto 30px">{full_name} {district_name} {dong} 지역 어디든 전문 관리사가 직접 찾아가 편안한 케어를 제공합니다.</p>
       <div>
         <a href="tel:050712803296" class="btn-primary">0507-1280-3296 전화 예약하기</a>
       </div>
@@ -292,7 +291,7 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
       </div>
     </div>
     <div class="business-info-footer">
-      <p><strong>퀸즈홈테라피</strong> | {full_name} {dong} 출장마사지 안내 페이지</p>
+      <p><strong>퀸즈홈테라피</strong> | {full_name} {district_name} {dong} 출장마사지 안내 페이지</p>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 퀸즈홈테라피. All rights reserved.</p>
@@ -304,24 +303,22 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
 </html>
 """
 
-# 전체 페이지 순회 및 파일 생성 + 지역별 허브 페이지 및 sitemap.xml 동시 생성
 count = 0
 sitemap_urls = ["https://queenshometherapy.netlify.app/"]
 
-for region_key, region_info in full_regions_data.items():
-    sitemap_urls.append(f"https://queenshometherapy.netlify.app/{region_key}.html")
-
+# 1. 서울, 경기, 인천 메인 페이지 (seoul.html 등) 및 구 단위 허브 페이지 자동 생성
 for region_key, region_info in full_regions_data.items():
     full_name = region_info["name"]
+    sitemap_urls.append(f"https://queenshometherapy.netlify.app/{region_key}.html")
     
-    # 지역별(서울/경기/인천) 전체 구·동 목록 허브 페이지 생성
-    hub_html = f"""<!DOCTYPE html>
+    # 지역별(서울/경기/인천) 대분류 허브 페이지 HTML 작성
+    region_hub_html = f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{full_name} 출장마사지 전 지역 안내 - 퀸즈홈테라피</title>
-<meta name="description" content="{full_name} 지역 전 구·동 24시 출장마사지 및 홈타이 서비스 안내. 원하시는 지역을 선택하여 상세 정보를 확인하세요.">
+<title>{full_name} 출장마사지 구별 전체보기 - 퀸즈홈테라피</title>
+<meta name="description" content="{full_name} 지역 전 구·시·군 24시 출장마사지 및 홈타이 서비스 안내. 원하시는 구를 선택하여 세부 동 정보를 확인하세요.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://queenshometherapy.netlify.app/{region_key}.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -342,15 +339,14 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
 .nav a{{color:#fff;font-size:.92rem;text-decoration:none}}
 .nav-cta{{background:var(--primary);color:#fff!important;padding:10px 22px;border-radius:30px;font-weight:700;font-size:.88rem}}
 .section{{padding:80px 0}}
-.section-white{{background:#fff}}
 .section-title{{text-align:center;margin-bottom:40px}}
 .section-title .bar{{width:40px;height:3px;background:var(--primary);margin:0 auto 12px;border-radius:2px}}
 .section-title h2{{font-size:clamp(24px,3vw,36px);font-weight:700;color:var(--text-dark);margin-bottom:10px}}
-.district-box{{background:#fff;border-radius:16px;padding:24px;margin-bottom:24px;border:1px solid rgba(255,107,53,.15);box-shadow:0 4px 12px rgba(0,0,0,.03)}}
-.district-box h3{{font-size:1.2rem;color:var(--primary);margin-bottom:14px;border-bottom:2px solid #fff5f0;padding-bottom:8px}}
-.dong-list{{display:flex;flex-wrap:wrap;gap:10px}}
-.dong-list a{{background:#fff5f0;color:var(--text-dark);padding:8px 14px;border-radius:8px;font-size:0.9rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);transition:all .2s}}
-.dong-list a:hover{{background:var(--primary);color:#fff;border-color:var(--primary)}}
+.district-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}}
+.district-card{{background:#fff;border-radius:16px;padding:24px;border:1px solid rgba(255,107,53,.15);box-shadow:0 4px 12px rgba(0,0,0,.03);text-decoration:none;transition:all .3s}}
+.district-card:hover{{transform:translateY(-5px);border-color:var(--primary);box-shadow:0 8px 20px rgba(255,107,53,.15)}}
+.district-card h3{{font-size:1.3rem;color:var(--primary);margin-bottom:10px}}
+.district-card p{{font-size:0.9rem;color:var(--text-muted)}}
 .footer{{background:#15151f;color:#b5b5c6;padding:60px 0 30px;font-size:14px}}
 .footer-bottom{{text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05);font-size:.8rem}}
 </style>
@@ -362,7 +358,7 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
       <div class="logo-icon">Q</div>
       <div>
         <div class="logo-text">퀸즈홈테라피</div>
-        <div class="logo-sub">{full_name} 전지역 안내</div>
+        <div class="logo-sub">{full_name} 지역별 안내</div>
       </div>
     </a>
     <nav class="nav">
@@ -376,20 +372,95 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
     <div class="container">
       <div class="section-title">
         <div class="bar"></div>
-        <h2>{full_name} 출장마사지 서비스 지역 전체보기</h2>
-        <p>방문하시는 구와 동을 선택하시면 상세 안내 페이지로 이동합니다.</p>
+        <h2>{full_name} 출장마사지 구·시·군 선택</h2>
+        <p>방문 원하시는 구 또는 시·군을 선택하세요.</p>
       </div>
+      <div class="district-grid">
 """
-    
+
     for dist_key, dist_info in region_info["districts"].items():
         district_name = dist_info["name"]
-        hub_html += f'<div class="district-box"><h3>{district_name}</h3><div class="dong-list">\n'
+        dist_path = f"{region_key}/{dist_key}"
+        sitemap_urls.append(f"https://queenshometherapy.netlify.app/{dist_path}/")
+        
+        region_hub_html += f"""        <a href="/{dist_path}/" class="district-card">
+          <h3>{full_name} {district_name}</h3>
+          <p>{district_name} 전 지역 24시 신속 방문 및 출장마사지 안내</p>
+        </a>\n"""
+
+        # 2. 각 구(District)별 하위 페이지 허브 생성 (예: seoul/gangnam/index.html)
+        dist_folder = os.path.join(region_key, dist_key)
+        os.makedirs(dist_folder, exist_ok=True)
+        
+        dist_page_html = f"""<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{full_name} {district_name} 출장마사지 - 24시 홈타이</title>
+<meta name="description" content="{full_name} {district_name} 출장마사지 및 홈타이 전문. 전 동 30분 내 방문 및 100% 후불제 안심 서비스 제공.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://queenshometherapy.netlify.app/{dist_path}/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{{margin:0;padding:0;box-sizing:border-box}}
+:root{{--primary:#ff6b35;--font:'Noto Sans KR',sans-serif;--text-dark:#1f2430;--text-muted:#5b6472;--bg-section:#fff5f0}}
+body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line-height:1.7;background:var(--bg-section);min-height:100vh}}
+.container{{max-width:1200px;margin:0 auto;padding:0 20px}}
+.header{{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,26,.9);border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px)}}
+.header-inner{{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:1200px;margin:0 auto;padding:0 20px}}
+.logo{{display:flex;align-items:center;gap:10px;text-decoration:none}}
+.logo-icon{{width:40px;height:40px;background:var(--primary);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff}}
+.logo-text{{font-size:1.2rem;font-weight:700;color:#fff}}
+.logo-sub{{font-size:.7rem;color:#b5b5c6;margin-top:-2px}}
+.nav{{display:flex;gap:28px;align-items:center}}
+.nav a{{color:#fff;font-size:.92rem;text-decoration:none}}
+.nav-cta{{background:var(--primary);color:#fff!important;padding:10px 22px;border-radius:30px;font-weight:700;font-size:.88rem}}
+.section{{padding:80px 0}}
+.section-title{{text-align:center;margin-bottom:40px}}
+.section-title .bar{{width:40px;height:3px;background:var(--primary);margin:0 auto 12px;border-radius:2px}}
+.section-title h2{{font-size:clamp(24px,3vw,36px);font-weight:700;color:var(--text-dark);margin-bottom:10px}}
+.dong-list{{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}}
+.dong-list a{{background:#fff;color:var(--text-dark);padding:10px 18px;border-radius:10px;font-size:0.95rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);transition:all .2s}}
+.dong-list a:hover{{background:var(--primary);color:#fff;border-color:var(--primary)}}
+.footer{{background:#15151f;color:#b5b5c6;padding:60px 0 30px;font-size:14px}}
+.footer-bottom{{text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05);font-size:.8rem}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">Q</div>
+      <div>
+        <div class="logo-text">퀸즈홈테라피</div>
+        <div class="logo-sub">{full_name} {district_name}</div>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="/{region_key}.html">{full_name} 전체보기</a>
+      <a href="tel:050712803296" class="nav-cta">전화 예약</a>
+    </nav>
+  </div>
+</header>
+<main role="main">
+  <section class="section" style="padding-top:140px;">
+    <div class="container">
+      <div class="section-title">
+        <div class="bar"></div>
+        <h2>{full_name} {district_name} 세부 동 선택</h2>
+        <p>원하시는 동을 선택하시면 해당 지역 맞춤 페이지로 이동합니다.</p>
+      </div>
+      <div class="dong-list">
+"""
+        # 3. 개별 동 페이지 생성 및 구 허브에 동 링크 추가
         for dong in dist_info["dongs"]:
             dir_path = f"{region_key}/{dist_key}/{dong}"
             sitemap_urls.append(f"https://queenshometherapy.netlify.app/{dir_path}/")
-            hub_html += f'  <a href="/{dir_path}/">{dong}</a>\n'
+            dist_page_html += f'        <a href="/{dir_path}/">{dong}</a>\n'
             
-            # 개별 동 페이지 생성
             folder_path = os.path.join(region_key, dist_key, dong)
             os.makedirs(folder_path, exist_ok=True)
             
@@ -409,10 +480,24 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
             with open(os.path.join(folder_path, "index.html"), "w", encoding="utf-8") as f:
                 f.write(html_content)
             count += 1
-            
-        hub_html += '</div></div>\n'
+
+        dist_page_html += """      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom"><p>&copy; 2026 퀸즈홈테라피. All rights reserved.</p></div>
+  </div>
+</footer>
+</body>
+</html>"""
         
-    hub_html += """    </div>
+        with open(os.path.join(dist_folder, "index.html"), "w", encoding="utf-8") as f:
+            f.write(dist_page_html)
+
+    region_hub_html += """      </div>
+    </div>
   </section>
 </main>
 <footer class="footer">
@@ -423,11 +508,10 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
 </body>
 </html>"""
     
-    # 지역별 허브 파일 저장 (예: seoul.html, gyeonggi.html, incheon.html)
     with open(f"{region_key}.html", "w", encoding="utf-8") as f:
-        f.write(hub_html)
+        f.write(region_hub_html)
 
-# sitemap.xml 파일 생성
+# sitemap.xml 생성
 sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
 sitemap_xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 for url in sitemap_urls:
@@ -437,4 +521,4 @@ sitemap_xml += '</urlset>'
 with open("sitemap.xml", "w", encoding="utf-8") as f:
     f.write(sitemap_xml)
 
-print(f"총 {count}개의 동별 페이지 및 지역별 전체보기(허브) 페이지, 사이트맵 생성이 완료되었습니다!")
+print(f"총 {count}개의 동별 페이지 및 지역/구별 허브 페이지, 사이트맵 생성이 완료되었습니다!")
