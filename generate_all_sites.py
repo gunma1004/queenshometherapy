@@ -145,7 +145,7 @@ desc_templates = [
     "완벽한 휴식을 위한 24시 홈케어 파트너, {full_name} {dong} 출장마사지 퀸즈홈테라피. 지금 바로 전문 관리사를 만나보세요."
 ]
 
-def get_html_content(title, desc, banner_path, main_title, sub_desc, bottom_selector_html, breadcrumb):
+def get_html_content(title, desc, banner_path, main_title, sub_desc, bottom_selector_html, breadcrumb, canonical_url):
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -155,6 +155,13 @@ def get_html_content(title, desc, banner_path, main_title, sub_desc, bottom_sele
 <meta name="description" content="{desc}">
 <meta name="robots" content="index,follow">
 <meta name="naver-site-verification" content="3f345e54f2dfbcb90e980d17cfe5c1febe5f14aa">
+<!-- Open Graph 태그 추가 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{canonical_url}">
+<meta property="og:image" content="https://queenshometherapy.netlify.app/images/banner.jpg">
+<link rel="canonical" href="{canonical_url}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -327,7 +334,8 @@ sitemap_urls = ["https://queenshometherapy.netlify.app/"]
 # 1. 서울, 경기, 인천 대분류 허브 페이지 생성
 for region_key, region_info in full_regions_data.items():
     full_name = region_info["name"]
-    sitemap_urls.append(f"https://queenshometherapy.netlify.app/{region_key}.html")
+    canonical_url = f"https://queenshometherapy.netlify.app/{region_key}.html"
+    sitemap_urls.append(canonical_url)
     
     dist_cards_html = '<section class="section section-light"><div class="container"><div class="section-title"><div class="bar"></div><h2>세부 구·시·군 선택</h2><p>원하시는 구/시/군을 선택하여 세부 정보를 확인하세요.</p></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;">'
     for dist_key, dist_info in region_info["districts"].items():
@@ -342,7 +350,8 @@ for region_key, region_info in full_regions_data.items():
         main_title=f"{full_name} 출장마사지·홈타이 서비스",
         sub_desc=f"{full_name} 전 지역 연중무휴 24시",
         bottom_selector_html=dist_cards_html,
-        breadcrumb=f"{full_name} 전체보기"
+        breadcrumb=f"{full_name} 전체보기",
+        canonical_url=canonical_url
     )
     with open(f"{region_key}.html", "w", encoding="utf-8") as f:
         f.write(hub_content)
@@ -351,7 +360,8 @@ for region_key, region_info in full_regions_data.items():
     for dist_key, dist_info in region_info["districts"].items():
         district_name = dist_info["name"]
         dist_path = f"{region_key}/{dist_key}"
-        sitemap_urls.append(f"https://queenshometherapy.netlify.app/{dist_path}/")
+        canonical_url = f"https://queenshometherapy.netlify.app/{dist_path}/"
+        sitemap_urls.append(canonical_url)
         
         dong_links_html = '<section class="section section-light"><div class="container"><div class="section-title"><div class="bar"></div><h2>세부 동 선택</h2><p>원하시는 동을 선택하여 맞춤 페이지로 이동하세요.</p></div><div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">'
         for dong in dist_info["dongs"]:
@@ -370,7 +380,8 @@ for region_key, region_info in full_regions_data.items():
             main_title=f"{district_name} 출장마사지·홈타이",
             sub_desc=f"{full_name} {district_name} 전 지역",
             bottom_selector_html=dong_links_html,
-            breadcrumb=f"{full_name} {district_name}"
+            breadcrumb=f"{full_name} {district_name}",
+            canonical_url=canonical_url
         )
         with open(os.path.join(dist_folder, "index.html"), "w", encoding="utf-8") as f:
             f.write(dist_content)
@@ -378,6 +389,7 @@ for region_key, region_info in full_regions_data.items():
         # 3. 개별 동 페이지 생성
         for dong in dist_info["dongs"]:
             dong_path = f"{region_key}/{dist_key}/{dong}"
+            canonical_url = f"https://queenshometherapy.netlify.app/{dong_path}/"
             folder_path = os.path.join(region_key, dist_key, dong)
             os.makedirs(folder_path, exist_ok=True)
             
@@ -397,7 +409,8 @@ for region_key, region_info in full_regions_data.items():
                 main_title=f"{dong} 출장마사지·홈타이",
                 sub_desc=f"{full_name} {district_name} {dong}",
                 bottom_selector_html=other_dongs_html,
-                breadcrumb=f"{full_name} {district_name} {dong}"
+                breadcrumb=f"{full_name} {district_name} {dong}",
+                canonical_url=canonical_url
             )
             with open(os.path.join(folder_path, "index.html"), "w", encoding="utf-8") as f:
                 f.write(dong_content)
@@ -413,4 +426,4 @@ sitemap_xml += '</urlset>'
 with open("sitemap.xml", "w", encoding="utf-8") as f:
     f.write(sitemap_xml)
 
-print(f"총 {count}개의 동 페이지 및 대분류/구별 허브 샵 페이지, 네이버 메타 태그, 사이트맵 생성이 완료되었습니다!")
+print(f"총 {count}개의 동 페이지 및 대분류/구별 허브 샵 페이지, 네이버 메타 태그, Open Graph 태그, 사이트맵 생성이 완료되었습니다!")
