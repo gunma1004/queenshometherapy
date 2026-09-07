@@ -209,6 +209,7 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
     </a>
     <nav class="nav">
       <a href="/">홈</a>
+      <a href="/{region_key}.html">지역별 전체보기</a>
       <a href="#price">프로그램 및 요금</a>
       <a href="tel:050712803296" class="nav-cta">전화 예약</a>
     </nav>
@@ -303,23 +304,97 @@ body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line
 </html>
 """
 
-# 전체 페이지 순회 및 파일 생성 + sitemap.xml 동시 생성
+# 전체 페이지 순회 및 파일 생성 + 지역별 허브 페이지 및 sitemap.xml 동시 생성
 count = 0
 sitemap_urls = ["https://queenshometherapy.netlify.app/"]
 
 for region_key, region_info in full_regions_data.items():
+    sitemap_urls.append(f"https://queenshometherapy.netlify.app/{region_key}.html")
+
+for region_key, region_info in full_regions_data.items():
     full_name = region_info["name"]
+    
+    # 지역별(서울/경기/인천) 전체 구·동 목록 허브 페이지 생성
+    hub_html = f"""<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{full_name} 출장마사지 전 지역 안내 - 퀸즈홈테라피</title>
+<meta name="description" content="{full_name} 지역 전 구·동 24시 출장마사지 및 홈타이 서비스 안내. 원하시는 지역을 선택하여 상세 정보를 확인하세요.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://queenshometherapy.netlify.app/{region_key}.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{{margin:0;padding:0;box-sizing:border-box}}
+:root{{--primary:#ff6b35;--font:'Noto Sans KR',sans-serif;--text-dark:#1f2430;--text-muted:#5b6472;--bg-section:#fff5f0}}
+body{{font-family:var(--font);letter-spacing:-0.01em;color:var(--text-dark);line-height:1.7;background:var(--bg-section);min-height:100vh}}
+.container{{max-width:1200px;margin:0 auto;padding:0 20px}}
+.header{{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,26,.9);border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px)}}
+.header-inner{{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:1200px;margin:0 auto;padding:0 20px}}
+.logo{{display:flex;align-items:center;gap:10px;text-decoration:none}}
+.logo-icon{{width:40px;height:40px;background:var(--primary);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff}}
+.logo-text{{font-size:1.2rem;font-weight:700;color:#fff}}
+.logo-sub{{font-size:.7rem;color:#b5b5c6;margin-top:-2px}}
+.nav{{display:flex;gap:28px;align-items:center}}
+.nav a{{color:#fff;font-size:.92rem;text-decoration:none}}
+.nav-cta{{background:var(--primary);color:#fff!important;padding:10px 22px;border-radius:30px;font-weight:700;font-size:.88rem}}
+.section{{padding:80px 0}}
+.section-white{{background:#fff}}
+.section-title{{text-align:center;margin-bottom:40px}}
+.section-title .bar{{width:40px;height:3px;background:var(--primary);margin:0 auto 12px;border-radius:2px}}
+.section-title h2{{font-size:clamp(24px,3vw,36px);font-weight:700;color:var(--text-dark);margin-bottom:10px}}
+.district-box{{background:#fff;border-radius:16px;padding:24px;margin-bottom:24px;border:1px solid rgba(255,107,53,.15);box-shadow:0 4px 12px rgba(0,0,0,.03)}}
+.district-box h3{{font-size:1.2rem;color:var(--primary);margin-bottom:14px;border-bottom:2px solid #fff5f0;padding-bottom:8px}}
+.dong-list{{display:flex;flex-wrap:wrap;gap:10px}}
+.dong-list a{{background:#fff5f0;color:var(--text-dark);padding:8px 14px;border-radius:8px;font-size:0.9rem;text-decoration:none;border:1px solid rgba(255,107,53,0.2);transition:all .2s}}
+.dong-list a:hover{{background:var(--primary);color:#fff;border-color:var(--primary)}}
+.footer{{background:#15151f;color:#b5b5c6;padding:60px 0 30px;font-size:14px}}
+.footer-bottom{{text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05);font-size:.8rem}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">Q</div>
+      <div>
+        <div class="logo-text">퀸즈홈테라피</div>
+        <div class="logo-sub">{full_name} 전지역 안내</div>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="/">홈으로</a>
+      <a href="tel:050712803296" class="nav-cta">전화 예약</a>
+    </nav>
+  </div>
+</header>
+<main role="main">
+  <section class="section" style="padding-top:140px;">
+    <div class="container">
+      <div class="section-title">
+        <div class="bar"></div>
+        <h2>{full_name} 출장마사지 서비스 지역 전체보기</h2>
+        <p>방문하시는 구와 동을 선택하시면 상세 안내 페이지로 이동합니다.</p>
+      </div>
+"""
+    
     for dist_key, dist_info in region_info["districts"].items():
         district_name = dist_info["name"]
+        hub_html += f'<div class="district-box"><h3>{district_name}</h3><div class="dong-list">\n'
         for dong in dist_info["dongs"]:
+            dir_path = f"{region_key}/{dist_key}/{dong}"
+            sitemap_urls.append(f"https://queenshometherapy.netlify.app/{dir_path}/")
+            hub_html += f'  <a href="/{dir_path}/">{dong}</a>\n'
+            
+            # 개별 동 페이지 생성
             folder_path = os.path.join(region_key, dist_key, dong)
             os.makedirs(folder_path, exist_ok=True)
             
             page_title = random.choice(title_templates).format(full_name=full_name, dong=dong)
             page_desc = random.choice(desc_templates).format(full_name=full_name, dong=dong)
-            dir_path = f"{region_key}/{dist_key}/{dong}"
-            
-            sitemap_urls.append(f"https://queenshometherapy.netlify.app/{dir_path}/")
             
             html_content = html_template.format(
                 full_name=full_name,
@@ -327,13 +402,30 @@ for region_key, region_info in full_regions_data.items():
                 dong=dong,
                 page_title=page_title,
                 page_desc=page_desc,
-                dir_path=dir_path
+                dir_path=dir_path,
+                region_key=region_key
             )
             
-            file_path = os.path.join(folder_path, "index.html")
-            with open(file_path, "w", encoding="utf-8") as f:
+            with open(os.path.join(folder_path, "index.html"), "w", encoding="utf-8") as f:
                 f.write(html_content)
             count += 1
+            
+        hub_html += '</div></div>\n'
+        
+    hub_html += """    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom"><p>&copy; 2026 퀸즈홈테라피. All rights reserved.</p></div>
+  </div>
+</footer>
+</body>
+</html>"""
+    
+    # 지역별 허브 파일 저장 (예: seoul.html, gyeonggi.html, incheon.html)
+    with open(f"{region_key}.html", "w", encoding="utf-8") as f:
+        f.write(hub_html)
 
 # sitemap.xml 파일 생성
 sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -345,4 +437,4 @@ sitemap_xml += '</urlset>'
 with open("sitemap.xml", "w", encoding="utf-8") as f:
     f.write(sitemap_xml)
 
-print(f"총 {count}개 페이지 생성 완료 및 sitemap.xml 자동 생성 완료!")
+print(f"총 {count}개의 동별 페이지 및 지역별 전체보기(허브) 페이지, 사이트맵 생성이 완료되었습니다!")

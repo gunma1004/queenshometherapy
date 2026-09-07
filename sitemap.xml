@@ -6,6 +6,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://queenshometherapy.netlify.app/seoul.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://queenshometherapy.netlify.app/gyeonggi.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://queenshometherapy.netlify.app/incheon.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://queenshometherapy.netlify.app/seoul/jongno/청운동/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
